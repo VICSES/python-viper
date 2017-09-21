@@ -1,5 +1,14 @@
+[![Build Status](https://travis-ci.org/VICSES/python-viper.svg?branch=master)](https://travis-ci.org/VICSES/python-viper)
+[![Coverage Status](https://coveralls.io/repos/github/VICSES/python-viper/badge.svg?branch=master)](https://coveralls.io/github/VICSES/python-viper?branch=master)
+
 # Synopsis
 
+```python
+from vicses.viper import Viper
+
+viper = Viper(ses_id='123', ses_password='password')
+viper.send('12345', 'This is the contents of an admin page')
+```
 
 
 # Python library to access VICSES Viper program
@@ -28,4 +37,37 @@ This library is licenced under the GNU Affero General Public License, the full t
 
 # Reference
 
+## \_\_init\_\_
 
+Optional parameters:
+
+* ses\_id
+* ses\_username
+* ses\_password
+* viper\_username
+* viper\_password
+
+Init must be able to set a value to all the username and password fields. If provided with an ses\_id number it will use it to generate the default values for ses\_username, viper\_username and viper\_password.
+
+## send
+
+Required parameters:
+
+* to
+* msg
+
+Optional parameters:
+
+* priority
+
+This sends a page to the pager number supplied in the to field. The msg field contains the body of the message.
+
+Priority is a number between 1 and 3. 1 sends an emergency message, 2 sends a non-emergency message and 3 sends an administrative message. If not specified priority defaults to 3. Most users only have permission to send administrative messages.
+
+Send returns an error value.
+On success it will return False.
+On failure it will return the element that it got stuck on, one of "SES LOgin", "Viper Login", or "Unknown response"
+
+## logging
+
+This module uses the logging library. Extensive output is provided if turned up to DEBUG, including the full output of every server response.
