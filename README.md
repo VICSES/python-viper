@@ -7,7 +7,7 @@
 To send messages on the Emergency Alerting System (EAS) pager network the
 Victoria State Emergency Service runs an online program called Viper.
 Viper is developed and maintained by Visionsteam, a private company with
-the maintenance contract for the EAS network.
+the maintenance contract for the EAS network. VICSES has very limited control.
 
 Viper is a basic HTML serverside form based program. Functional but a little
 ugly and not suitable for use as a service.

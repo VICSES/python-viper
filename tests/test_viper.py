@@ -6,7 +6,7 @@
 #       appropriate.
 
 import pytest
-from viper import Viper
+from vicses.viper import Viper
 from requests import Response
 import requests
 import requests_mock

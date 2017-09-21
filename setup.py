@@ -1,11 +1,16 @@
 from setuptools import setup, find_packages
 import os
 
-rootdir = os.path.abspath(os.path.dirname(__file__))
-long_description = open(os.path.join(rootdir, 'README.md')).read()
+long_description= (
+  'The Victoria State Emergency Service uses an online tool called Viper '
+  'to send Emergency Alerting System (EAS) pages. This online form based '
+  'system is difficult to extend and use in other tools.\n\n'
+  'This module hides the nasty work of interacting with Viper presenting '
+  'a simple interface for scripts to use.'
+)
 
 setup (
-    name='Viper',
+    name='vicses.viper',
     version='1.0.0',
 
     description='Send VICSES EAS pages via Viper',
@@ -18,7 +23,7 @@ setup (
 
     license='AGPL-3+',
 
-    keywords='VICSES EAS paging',
+    keywords='Viper VICSES EAS paging',
 
     classifiers=[
         'Development Status :: 4 - Beta',
