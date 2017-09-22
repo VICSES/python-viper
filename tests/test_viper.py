@@ -8,8 +8,8 @@
 import pytest
 from vicses.viper import Viper
 from requests import Response
-import requests
 import requests_mock
+
 
 def test_creation():
     # Initialisation basically takes login password details
@@ -30,7 +30,6 @@ def test_creation():
     assert(t2.ses_password == 'car')
     assert(t2.viper_username == 'flubble')
     assert(t2.viper_password == 'duck')
-
 
     # Override some defaults
     t3 = Viper(ses_id='23', ses_password='alphabet', viper_username='donald', ses_username='duck')
@@ -71,6 +70,7 @@ def test_creation():
     assert('viper_password' in str(e8))
     assert('ses_id' in str(e8))
 
+
 def test_send():
     ses_login_resp = Response()
     ses_login_resp.status_code = 302
@@ -93,6 +93,7 @@ def test_send():
     viper_login_url = 'https://viper.ses.vic.gov.au/ViperWeb/login.do'
 
     responses = []
+
     def send_handler(request):
         if request.path_url == '/ViperWeb/msg/sendMessage.do':
             try:
@@ -115,7 +116,7 @@ def test_send():
     with requests_mock.mock() as m1:
         m1._adapter = adapter # Dodgy but nfi how it is meant to be done
         err1 = t1.send('111', 't1 send')
-    assert(err1 == False)
+    assert(err1 is False)
     assert(m1.request_history.pop(0).url == send_url)
     assert(m1.request_history.pop(0).url == ses_login_url)
     assert(m1.request_history.pop(0).url == send_url)
@@ -130,14 +131,14 @@ def test_send():
     with requests_mock.mock() as m2:
         m2._adapter = adapter # Dodgy but nfi how it is meant to be done
         err2 = t2.send('111', 't1 send')
-    assert(err2 == False)
+    assert(err2 is False)
     assert(m2.request_history.pop(0).url == send_url)
     assert(len(m1.request_history) == 0)
     assert(len(responses) == 0)
 
     # SES auth unsuccessful
     t3 = Viper(ses_id='23', ses_password='alphabet')
-    responses = [ses_login_resp, ses_login_resp, ses_login_resp, ses_login_resp, ses_login_resp] 
+    responses = [ses_login_resp, ses_login_resp, ses_login_resp, ses_login_resp, ses_login_resp]
     with requests_mock.mock() as m3:
         m3._adapter = adapter # Dodgy but nfi how it is meant to be done
         err3 = t3.send('111', 't1 send')
@@ -157,7 +158,7 @@ def test_send():
 
     # Viper auth unsuccessful
     t4 = Viper(ses_id='23', ses_password='alphabet')
-    responses = [ses_login_resp, viper_login_resp, viper_login_resp, viper_login_resp, viper_login_resp] 
+    responses = [ses_login_resp, viper_login_resp, viper_login_resp, viper_login_resp, viper_login_resp]
     with requests_mock.mock() as m4:
         m4._adapter = adapter # Dodgy but nfi how it is meant to be done
         err4 = t4.send('111', 't1 send')
@@ -177,7 +178,7 @@ def test_send():
 
     # Garbage out
     t5 = Viper(ses_id='25', ses_password='alphabet')
-    responses = [basic_resp, basic_resp, basic_resp, basic_resp, basic_resp] 
+    responses = [basic_resp, basic_resp, basic_resp, basic_resp, basic_resp]
     with requests_mock.mock() as m5:
         m5._adapter = adapter # Dodgy but nfi how it is meant to be done
         err5 = t5.send('111', 't1 send')
@@ -192,11 +193,11 @@ def test_send():
 
     # Weird flow
     t6 = Viper(ses_id='23', ses_password='alphabet')
-    responses = [viper_login_resp, basic_resp, ses_login_resp, viper_login_resp, success_resp] 
+    responses = [viper_login_resp, basic_resp, ses_login_resp, viper_login_resp, success_resp]
     with requests_mock.mock() as m6:
         m6._adapter = adapter # Dodgy but nfi how it is meant to be done
         err6 = t6.send('111', 't1 send')
-    assert(err6 == False)
+    assert(err6 is False)
     assert(m3.request_history.pop(0).url == send_url)
     assert(m3.request_history.pop(0).url == viper_login_url)
     assert(m3.request_history.pop(0).url == send_url)
@@ -207,4 +208,3 @@ def test_send():
     assert(m3.request_history.pop(0).url == send_url)
     assert(len(m1.request_history) == 0)
     assert(len(responses) == 0)
-
