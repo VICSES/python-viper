@@ -1,6 +1,15 @@
+sudo: false
 language: python
 python:
     - "3.5"
     - "3.6"
+install:
+    - pip install -r requirements.txt
+    - pip install python_coveralls pytest-cov
 script:
-    PYTHONPATH=$PWD:$PYTHONPATH pytest
+    PYTHONPATH=$PWD:$PYTHONPATH pytest --cov vicses.viper
+after_success:
+    # Only publish coverage once, easier to always run though
+    - if [[ $TRAVIS_PYTHON_VERSION == '3.6' ]]; then
+        coveralls;
+      fi
