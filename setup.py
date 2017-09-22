@@ -11,7 +11,7 @@ long_description= (
 
 setup (
     name='vicses.viper',
-    version='1.0.0',
+    version='1.0.1',
 
     description='Send VICSES EAS pages via Viper',
     long_description=long_description,
@@ -35,14 +35,8 @@ setup (
         'Programming Language :: Python :: 3',
     ],
 
-    py_modules=["viper"],
+    packages=["vicses.viper"],
 
     install_requires=['requests'],
-
-    extras_require={
-            'dev': ['check-manifest'],
-            'test': ['coverage'],
-    },
-
-    package_data={},
+    tests_require=['requests_mock', 'pytest']
 )
