@@ -16,7 +16,7 @@ class Viper:
         if ses_username is not None:
             self.ses_username = ses_username
         elif ses_id is not None:
-            self.ses_username = "ses_{}".format(ses_id)
+            self.ses_username = "ses{}".format(ses_id)
         else:
             raise(TypeError("missing required argument 'ses_username', provide either 'ses_username' or 'ses_id'"))
 

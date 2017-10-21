@@ -10,7 +10,7 @@ long_description = (
 
 setup(
     name='vicses.viper',
-    version='1.0.1',
+    version='1.1.0',
 
     description='Send VICSES EAS pages via Viper',
     long_description=long_description,

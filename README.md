@@ -66,7 +66,7 @@ Priority is a number between 1 and 3. 1 sends an emergency message, 2 sends a no
 
 Send returns an error value.
 On success it will return False.
-On failure it will return the element that it got stuck on, one of "SES LOgin", "Viper Login", or "Unknown response"
+On failure it will return the element that it got stuck on, one of "SES Login", "Viper Login", or "Unknown response"
 
 ## logging
 

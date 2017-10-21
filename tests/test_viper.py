@@ -18,7 +18,7 @@ def test_creation():
     # Default options, id number & ses password
     t1 = Viper(ses_id='23', ses_password='alphabet')
     assert(type(t1) is Viper)
-    assert(t1.ses_username == 'ses_23')
+    assert(t1.ses_username == 'ses23')
     assert(t1.ses_password == 'alphabet')
     assert(t1.viper_username == '23')
     assert(t1.viper_password == '023')
@@ -42,7 +42,7 @@ def test_creation():
     # Override different defaults
     t4 = Viper(ses_id='23', ses_password='alphabet', viper_password='foo', viper_username='raffy')
     assert(type(t4) is Viper)
-    assert(t4.ses_username == 'ses_23')
+    assert(t4.ses_username == 'ses23')
     assert(t4.ses_password == 'alphabet')
     assert(t4.viper_username == 'raffy')
     assert(t4.viper_password == 'foo')
