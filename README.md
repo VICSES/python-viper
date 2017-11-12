@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/VICSES/python-viper.svg?branch=master)](https://travis-ci.org/VICSES/python-viper)
 [![Coverage Status](https://coveralls.io/repos/github/VICSES/python-viper/badge.svg?branch=master)](https://coveralls.io/github/VICSES/python-viper?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FVICSES%2Fpython-viper.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FVICSES%2Fpython-viper?ref=badge_shield)
 
 # Synopsis
 
@@ -71,3 +72,7 @@ On failure it will return the element that it got stuck on, one of "SES Login", 
 ## logging
 
 This module uses the logging library. Extensive output is provided if turned up to DEBUG, including the full output of every server response.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FVICSES%2Fpython-viper.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FVICSES%2Fpython-viper?ref=badge_large)
